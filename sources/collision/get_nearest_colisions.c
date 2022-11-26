@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_nearest_colisions.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlarra <mlarra@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/28 21:26:38 by mlarra            #+#    #+#             */
+/*   Updated: 2022/10/17 18:02:14 by mlarra           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../headers/collision.h"
+#include "../../headers/minirt.h"
+#include "../../headers/ray.h"
+
+void	get_first_collisions(t_ray **ray, t_scene *scene, int heigth, int width)
+{
+	register int	i;
+	register int	j;
+
+	i = 0;
+	while (i < heigth)
+	{
+		j = 0;
+		while (j < width)
+		{
+			current_ray_nearest_collision(&ray[i][j], scene, FULL);
+			++j;
+		}
+		++i;
+	}
+}
